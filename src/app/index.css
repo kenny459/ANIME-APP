@@ -1,0 +1,20 @@
+@import "tailwindcss";   
+
+@layer base {
+  body {
+    @apply bg-[#242A32] mx-3;
+  }
+} 
+ 
+.search {
+    @apply w-full bg-[#3A3F47] px-4 py-3 rounded-[20px] mt-10 max-w-3xl mx-auto;
+
+    & div {
+      @apply relative flex items-center;
+    }
+
+ 
+    & input {
+      @apply w-full bg-transparent py-2 sm:pr-10 pl-10 text-base text-gray-200 placeholder-[#67686D] outline-hidden placeholder:text-base;
+    }
+  }
