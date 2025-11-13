@@ -3,7 +3,7 @@ import MovieCard from './MovieCard'
 
 const TopAnime = () => {
  const [topAnimeData, setTopAnimeData] = useState([])
-  const [loading, setLoading] = useState(true)  
+ const [loading, setLoading] = useState(true)  
 
     async function  fetchTopAnime(){  
       try { 
@@ -23,7 +23,8 @@ const TopAnime = () => {
       } catch (error) {
         console.error('Error fetching data:', error);
       }
-    }  
+    }   
+    
      useEffect(() => {
     fetchTopAnime();
   }, []);
@@ -37,7 +38,7 @@ const TopAnime = () => {
          topAnimeData && topAnimeData.map((topAnime) => (  
           
           <div>
-           <MovieCard key={topAnime.mal_id} image={topAnime.images.jpg.image_url} title={topAnime.title} /> 
+           <MovieCard key={topAnime.mal_id}  title={topAnime.title} /> 
             </div>
            
            )

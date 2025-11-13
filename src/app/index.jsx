@@ -16,26 +16,7 @@ const App = () => {
    
 
 
-  async function fetchData() {
-          try { 
-            const response = await fetch('https://api.jikan.moe/v4/top/anime');  
-             if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-            const data = await response.json(); 
-            console.log(data);   
-             
-            if (data && data.data) { 
-              setAnimeData(data.data);  
-              setLoading(false);
-            }
-
-          } catch (error) { 
-            console.error('Error fetching data:', error); 
-          } 
-          
-        
-      }
+  
 
   return (
     <div> 
