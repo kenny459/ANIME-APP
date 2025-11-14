@@ -3,7 +3,9 @@ import MovieCard from './MovieCard'
 
 const TopAnime = () => {
  const [topAnimeData, setTopAnimeData] = useState([])
- const [loading, setLoading] = useState(true)  
+ const [loading, setLoading] = useState(true)   
+ const [error, setError] = useState('')
+ 
 
     async function  fetchTopAnime(){  
       try { 
@@ -20,8 +22,12 @@ const TopAnime = () => {
               setLoading(false);
             }
         
-      } catch (error) {
+      } catch (error) { 
+          setError('Error fetching data. Please try again') 
         console.error('Error fetching data:', error);
+      } 
+      finally{ 
+        setLoading(false)
       }
     }   
     
@@ -34,11 +40,14 @@ const TopAnime = () => {
     {  
       loading ? ( 
         <p className = 'text-white'>Loading...</p>
-      ): ( 
+      ):error ? ( 
+      <p className='text-red-500'>  
+      {error}
+      </p>): ( 
          topAnimeData && topAnimeData.map((topAnime) => (  
           
           <div>
-           <MovieCard key={topAnime.mal_id}  title={topAnime.title} /> 
+           <MovieCard key={topAnime.mal_id}  image={manga.images.jpg.image_url} title={topAnime.title} /> 
             </div>
            
            )

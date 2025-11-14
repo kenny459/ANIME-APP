@@ -6,7 +6,8 @@ import MovieCard from './MovieCard'
 
 const Anime = () => {  
    const [animeData, setAnimeData] = useState([])
-    const [loading, setLoading] = useState(true)  
+   const [loading, setLoading] = useState(true)   
+   const [error, setError] = useState('')
 
     async function  fetchAnime(){  
       try { 
@@ -23,8 +24,14 @@ const Anime = () => {
               setLoading(false);
             }
         
-      } catch (error) {
+      } catch (error) {  
+
+        setError('Error fetching data. Please try again') 
+
         console.error('Error fetching data:', error);
+      } 
+      finally{ 
+        setLoading(false)
       }
     }  
      
@@ -37,7 +44,11 @@ const Anime = () => {
     {  
       loading ? ( 
         <p className = 'text-white'>Loading...</p>
-      ): ( 
+      ): error ? ( 
+      <p className='text-red-500'>  
+      {error}
+      </p>): 
+      ( 
          animeData && animeData.map((anime) => (  
           
           <div>

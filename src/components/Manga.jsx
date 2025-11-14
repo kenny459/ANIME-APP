@@ -3,6 +3,8 @@ import MovieCard from './MovieCard'
 const Manga = () => {
  const [mangaData, setMangaData] = useState([])
   const [loading, setLoading] = useState(true)  
+  const [error, setError] = useState('')
+   
  
     async function  fetchManga(){  
       try { 
@@ -19,8 +21,12 @@ const Manga = () => {
               setLoading(false);
             }
         
-      } catch (error) {
+      } catch (error) { 
+         setError('Error fetching data. Please try again') 
         console.error('Error fetching data:', error);
+      } 
+       finally{ 
+        setLoading(false)
       }
     } 
     useEffect(() => {
@@ -31,7 +37,10 @@ const Manga = () => {
     {  
       loading ? ( 
         <p className = 'text-white'>Loading...</p>
-      ): ( 
+      ): error ? ( 
+      <p className='text-red-500'>  
+      {error}
+      </p>):  ( 
          mangaData && mangaData.map((manga) => (  
           
           <div>
