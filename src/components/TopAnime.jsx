@@ -47,7 +47,7 @@ const TopAnime = () => {
          topAnimeData && topAnimeData.map((topAnime) => (  
           
           <div>
-           <MovieCard key={topAnime.mal_id}  image={manga.images.jpg.image_url} title={topAnime.title} /> 
+           <MovieCard key={topAnime.mal_id}  image={topAnime.images.jpg.image_url} title={topAnime.title} /> 
             </div>
            
            )

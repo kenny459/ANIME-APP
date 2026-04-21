@@ -1,7 +1,7 @@
 import React from 'react'
 
 const TabButtons = ({activeTabIndex, setActiveTabIndex}) => { 
-    const tabs = ['Anime', 'Manga' , 'Top Anime']  
+    const tabs = ['Anime', 'Manga']  
      
 
 
